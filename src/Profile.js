@@ -1,12 +1,11 @@
 import * as React from "react";
 import "./styles.css";
-import { Button} from 'react-bootstrap';
-import Profile from "./Profile";
 
-export default function App() {
+
+export default function Profile() {
   const [users, setUsers] = React.useState([]);
   const f = async () => {
-    const res = await fetch("https://reqres.in/api/users/");
+    const res = await fetch("https://reqres.in/api/users/2");
     const json = await res.json();
     setUsers(json.data);
   };
@@ -14,7 +13,7 @@ export default function App() {
     f();
   }, []);
   return (
-    <div className="App">
+    <div className="Profile">
       <h1>Hello ImageScopic users!</h1>
       <div className="flex">
         {users.length &&
@@ -29,9 +28,7 @@ export default function App() {
                 <p>
                   <strong>{user.last_name}</strong>
                 </p>
-                <Button variant="btn btn-success" onClick={Profile}>
-                Click button to view Profile
-                </Button>
+        
               </div>
               
             );
